@@ -33,23 +33,26 @@ jobs:
       build-args: |
         APP_NAME=${{ matrix.app }}
 
-  # release-dev:
-  #   needs: [build]
+  release-dev:
+    needs: [build]
 
-  #   strategy:
-  #     matrix:
-  #       app:
-  #         - mu
-  #         # - nu
-  #         # - tu
+    strategy:
+      matrix:
+        app:
+          - mu
+          # - nu
+          # - tu
 
-  #   uses: andreswebs/gh-actions/.github/workflows/helm-upgrade-chart.yml@main
-  #   with:
-  #     runs-on: ubuntu-latest
-  #     image-artifact: image-${{ matrix.app }}
-  #     git-repo: andreswebs-public-images/argo-example-k8s-config-alt
-  #     chart-dir: ./clusters/dev/${{ matrix.app }}
-  #     chart-name: ${{ matrix.app }}
-  #     secret-id: /tmp/ARGOCD_CONFIG
-  #     aws-region: ${{ vars.AWS_REGION }}
-  #     role-to-assume: ${{ vars.AWS_IAM_ROLE_ARN }}
+    runs-on: ubuntu-latest
+    uses: andreswebs/gh-actions/.github/workflows/app-upgrade.yml@dev
+    with:
+      runs-on: ubuntu-latest
+      aws-region: ${{ vars.AWS_REGION }}
+      role-to-assume: ${{ vars.AWS_IAM_ROLE_ARN }}
+      image-artifact: image-${{ matrix.app }}
+      secret-id: /andreswebs-public-images/github/example-automation
+      git-repo: andreswebs-public-images/argo-example-k8s-config
+      app-name: ${{ matrix.app }}
+      app-dir: apps/${{ matrix.app }}/overlays/dev
+      app-file: ${{ matrix.app }}.helm.values.yaml
+      # auto-merge: true
