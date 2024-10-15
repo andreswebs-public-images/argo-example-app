@@ -30,8 +30,6 @@ jobs:
       image-default-tag: latest
       image-artifact: image-${{ matrix.app }}
       context-dir: .
-      matrix-step-name: build
-      matrix-key: ${{ matrix.app }}
       build-args: |
         APP_NAME=${{ matrix.app }}
 
