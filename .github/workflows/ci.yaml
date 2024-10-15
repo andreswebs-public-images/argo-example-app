@@ -43,7 +43,6 @@ jobs:
           # - nu
           # - tu
 
-    runs-on: ubuntu-latest
     uses: andreswebs/gh-actions/.github/workflows/app-upgrade.yml@dev
     with:
       runs-on: ubuntu-latest
