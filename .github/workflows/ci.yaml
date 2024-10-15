@@ -54,4 +54,4 @@ jobs:
       app-name: ${{ matrix.app }}
       app-dir: apps/${{ matrix.app }}/overlays/dev
       app-file: ${{ matrix.app }}.helm.values.yaml
-      # auto-merge: true
+      auto-merge: true
