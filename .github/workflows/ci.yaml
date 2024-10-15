@@ -35,23 +35,23 @@ jobs:
       build-args: |
         APP_NAME=${{ matrix.app }}
 
-  release-dev:
-    needs: [build]
+  # release-dev:
+  #   needs: [build]
 
-    strategy:
-      matrix:
-        app:
-          - mu
-          # - nu
-          # - tu
+  #   strategy:
+  #     matrix:
+  #       app:
+  #         - mu
+  #         # - nu
+  #         # - tu
 
-    uses: andreswebs/gh-actions/.github/workflows/helm-upgrade-chart.yml@main
-    with:
-      runs-on: ubuntu-latest
-      image-artifact: image-${{ matrix.app }}
-      git-repo: andreswebs-public-images/argo-example-k8s-config-alt
-      chart-dir: ./clusters/dev/${{ matrix.app }}
-      chart-name: ${{ matrix.app }}
-      secret-id: /tmp/ARGOCD_CONFIG
-      aws-region: ${{ vars.AWS_REGION }}
-      role-to-assume: ${{ vars.AWS_IAM_ROLE_ARN }}
+  #   uses: andreswebs/gh-actions/.github/workflows/helm-upgrade-chart.yml@main
+  #   with:
+  #     runs-on: ubuntu-latest
+  #     image-artifact: image-${{ matrix.app }}
+  #     git-repo: andreswebs-public-images/argo-example-k8s-config-alt
+  #     chart-dir: ./clusters/dev/${{ matrix.app }}
+  #     chart-name: ${{ matrix.app }}
+  #     secret-id: /tmp/ARGOCD_CONFIG
+  #     aws-region: ${{ vars.AWS_REGION }}
+  #     role-to-assume: ${{ vars.AWS_IAM_ROLE_ARN }}
