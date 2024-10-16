@@ -46,6 +46,7 @@ jobs:
     uses: andreswebs/gh-actions/.github/workflows/app-upgrade.yml@main
     with:
       runs-on: ubuntu-latest
+      environment: dev
       aws-region: ${{ vars.AWS_REGION }}
       role-to-assume: ${{ vars.AWS_IAM_ROLE_ARN }}
       image-artifact: image-${{ matrix.app }}
