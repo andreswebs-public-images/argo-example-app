@@ -56,3 +56,4 @@ jobs:
       app-dir: apps/${{ matrix.app }}/overlays/dev
       app-file: ${{ matrix.app }}.helm.values.yaml
       auto-merge: true
+      add-env-tag: false
